@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+.arrow_box {
+  position: relative;
+  display: inline-table;
+  padding: 20px 30px;
+  padding-right: 10px;
+  height: 3em;
+  background: tan;
+  line-height: 1.5em;
+  vertical-align: middle;
+}
+.arrow_box:before, .arrow_box:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-style: solid;
+  border-width: calc(20px + 1.5em/2*2) 0 calc(20px + 1.5em/2*2) 20px;
+  border-color: transparent transparent transparent white;
+}
+.arrow_box:before .arrow_box, .arrow_box:after .arrow_box {
+  position: relative;
+  display: inline-table;
+  padding: 20px 30px;
+  padding-right: 10px;
+  height: 3em;
+  background: tan;
+  line-height: 1.5em;
+  vertical-align: middle;
+}
+.arrow_box:before .arrow_box:before, .arrow_box:before .arrow_box:after, .arrow_box:after .arrow_box:before, .arrow_box:after .arrow_box:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-style: solid;
+  border-width: calc(20px + 1.5em/2*2) 0 calc(20px + 1.5em/2*2) 20px;
+  border-color: transparent transparent transparent white;
+}
+.arrow_box:before .arrow_box:after, .arrow_box:after .arrow_box:after {
+  left: auto;
+  right: -20px;
+  border-color: transparent transparent transparent tan;
+}
+.arrow_box:before .arrow_box + .arrow_box, .arrow_box:after .arrow_box + .arrow_box {
+  margin-left: 50px;
+}
+.arrow_box:before .arrow_box .text, .arrow_box:after .arrow_box .text {
+  display: table-cell;
+  vertical-align: middle;
+}
+.arrow_box:after {
+  left: auto;
+  right: -20px;
+  border-color: transparent transparent transparent tan;
+}
+.arrow_box + .arrow_box {
+  margin-left: 50px;
+}
+.arrow_box .text {
+  display: table-cell;
+  vertical-align: middle;
+}
+</style>
+</head>
+ 
+<body>
+    <center>
+        <div class="arrow_box">
+          <div class="text">文字文字</div>
+        </div>
+        <div class="arrow_box">
+          <div class="text">111文字<br>文字321321</div>
+        </div>
+      </center>
+
+      <!-- <style lang="scss">
+        $arrow_width: 30px; /*三角形要多胖*/
+        $line_height: 1.5em; /*這是要用來計算箭頭的高度的*/
+        $lines: 2;  /*需要先設定行數 不然每個box高度會不同*/
+        .arrow_box {
+            position: relative;
+            display: inline-table; /*為了2行以上，文字需要垂直置中，這是IE支援的寫法，不然就flex即可解決*/
+            padding: $arrow_width ($arrow_width+10);
+            padding-right: 10px;
+            height: $line_height*$lines; /*讓不足2行者也一樣高*/
+            background: tan;
+            line-height: $line_height;
+            vertical-align: middle; /*若外層用flex就不需要這樣對齊*/
+            &:before,
+            &:after {
+                $arrwo_height: calc(#{$arrow_width} + #{$line_height}/2*#{$lines}); /*三角形高 = 三角形寬 + 行高 ÷ 2 × 行數*/
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-style: solid;
+                border-width: $arrwo_height 0 $arrwo_height $arrow_width; /*用CSS做三角形*/
+                border-color: transparent transparent transparent white;
+            }
+            &:after {
+                left: auto;
+                right: -($arrow_width);
+                border-color: transparent transparent transparent tan;
+            }
+            + .arrow_box {
+                margin-left: ($arrow_width+30);
+            }
+            .text {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    </style> -->
+</body>
+ 
+</html>
